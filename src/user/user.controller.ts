@@ -16,4 +16,11 @@ export class UserController {
   getProfile(@Req() req: any) {
     return this.userService.findById(req.user._id);
   }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all users' })
+  @UseGuards(JwtAuthGuard)
+  getAllUsers() {
+    return this.userService.findAll(); // Ensure you implement findAll in UserService
+  }
 }
