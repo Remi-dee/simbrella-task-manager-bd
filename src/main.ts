@@ -10,7 +10,10 @@ async function bootstrap() {
     .setDescription('API for task management system')
     .setVersion('1.0')
     .addTag('auth')
-    .addBearerAuth()
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT', in: 'header' },
+      'Authorization',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
@@ -18,7 +21,8 @@ async function bootstrap() {
   app.enableCors({
     origin: 'http://localhost:3000', // Your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type, Accept',
+    allowedHeaders: 'Content-Type, Accept, Authorization',
+    credentials: true,
   });
 
   app.listen(4000, () => console.log(`Server started on port 4000`));

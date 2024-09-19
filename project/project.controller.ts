@@ -8,8 +8,8 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { TaskService } from './task.service';
-import { CreateTaskDto, UpdateTaskDto } from './task.dto';
+import { TaskService } from './project.service';
+import { CreateTaskDto, UpdateTaskDto } from './project.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from '../user/user.schema';
 import {
@@ -20,7 +20,7 @@ import {
   ApiBearerAuth,
 } from '@nestjs/swagger';
 import { GetUser } from 'src/auth/get-user.decorator';
-import { Task } from './task.schema';
+import { Task } from './project.schema';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @ApiTags('Tasks')
