@@ -46,7 +46,7 @@ export class TaskController {
     description: 'Unauthorized, user not logged in.',
   })
   createTask(@Body() createTaskDto: CreateTaskDto, @GetUser() user: User) {
-    return this.taskService.createTask(createTaskDto, user._id);
+    return this.taskService.createTask(createTaskDto, user);
   }
 
   @Get()
@@ -104,8 +104,12 @@ export class TaskController {
     status: 404,
     description: 'Task not found.',
   })
-  updateTask(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.taskService.updateTask(id, updateTaskDto);
+  updateTask(
+    @Param('id') id: string,
+    @Body() updateTaskDto: UpdateTaskDto,
+    @GetUser() user: User,
+  ) {
+    return this.taskService.updateTask(id, updateTaskDto, user);
   }
 
   @Delete(':id')
@@ -123,7 +127,7 @@ export class TaskController {
     status: 404,
     description: 'Task not found.',
   })
-  deleteTask(@Param('id') id: string) {
-    return this.taskService.deleteTask(id);
+  deleteTask(@Param('id') id: string, @GetUser() user: User) {
+    return this.taskService.deleteTask(id, user);
   }
 }
