@@ -24,4 +24,25 @@ export class UserService {
   async findAll(): Promise<User[]> {
     return this.userModel.find().exec();
   }
+
+  async getUserPreferences(
+    userId: any,
+  ): Promise<{ notificationsEnabled: boolean }> {
+    const user = await this.userModel
+      .findById(userId)
+      .select('notificationsEnabled')
+      .exec();
+    return { notificationsEnabled: user.notificationsEnabled };
+  }
+
+  async updatePreferences(
+    userId: any,
+    notificationsEnabled: boolean,
+  ): Promise<User> {
+    return this.userModel.findByIdAndUpdate(
+      userId,
+      { notificationsEnabled },
+      { new: true },
+    );
+  }
 }

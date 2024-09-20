@@ -1,8 +1,11 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Req, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { User } from './user.schema';
+import { GetUser } from 'src/auth/get-user.decorator';
+import { EnableNotification } from './user.dto';
 
 @ApiTags('users')
 @ApiBearerAuth('Authorization')
@@ -22,5 +25,22 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   getAllUsers() {
     return this.userService.findAll(); // Ensure you implement findAll in UserService
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch('preferences')
+  updateNotificationPreferences(
+    @Body() preferences: EnableNotification,
+    @GetUser() user: User,
+  ) {
+    return this.userService.updatePreferences(
+      user._id,
+      preferences.notificationsEnabled,
+    );
+  }
+
+  @Get('preferences')
+  getUserPreferences(@GetUser() user: User) {
+    return this.userService.getUserPreferences(user._id);
   }
 }

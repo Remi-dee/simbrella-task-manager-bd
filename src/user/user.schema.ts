@@ -14,6 +14,9 @@ export class User extends Document {
 
   @Prop({ default: false })
   isAdmin: boolean;
+
+  @Prop({ default: true })
+  notificationsEnabled: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -72,10 +72,13 @@ export class TaskService {
     }
 
     // Send task deletion email notification
-    await this.emailService.sendTaskUpdateNotification(
-      user,
-      task.title,
-      'deleted',
-    );
+
+    if (user.notificationsEnabled) {
+      await this.emailService.sendTaskUpdateNotification(
+        user,
+        task.title,
+        'deleted',
+      );
+    }
   }
 }
