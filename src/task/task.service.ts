@@ -18,13 +18,15 @@ export class TaskService {
     await task.save();
 
     // Send task creation email notification
-    await this.emailService.sendTaskUpdateNotification(
-      user,
-      task.title,
-      'created',
-    );
+    if (user.notificationsEnabled) {
+      await this.emailService.sendTaskUpdateNotification(
+        user,
+        task.title,
+        'created',
+      );
 
-    return task;
+      return task;
+    }
   }
 
   async getTasks(): Promise<Task[]> {
@@ -55,11 +57,13 @@ export class TaskService {
     }
 
     // Send task update email notification
-    await this.emailService.sendTaskUpdateNotification(
-      user,
-      task.title,
-      'updated',
-    );
+    if (user.notificationsEnabled) {
+      await this.emailService.sendTaskUpdateNotification(
+        user,
+        task.title,
+        'updated',
+      );
+    }
 
     return task;
   }
