@@ -30,10 +30,6 @@ export class TeamService {
     return team.save();
   }
 
-  async getTeamsByProject(projectId: string) {
-    return this.teamModel.find({ projectId }).populate('members', 'username'); // Adjust fields as needed
-  }
-
   async updateTeam(id: string, updateTeamDto: UpdateTeamDto) {
     const updatedTeam = await this.teamModel.findByIdAndUpdate(
       id,
@@ -62,5 +58,19 @@ export class TeamService {
     team.members = team.members.filter((member) => member !== userId);
     await team.save();
     return { message: 'User removed from team successfully' };
+  }
+
+  async getTeamsByProject(projectId: string) {
+    return this.teamModel
+      .find({ projectId })
+      .populate('members', 'username')
+      .populate('projectId', 'name');
+  }
+
+  async getAllTeams() {
+    return this.teamModel
+      .find()
+      .populate('members', 'username')
+      .populate('projectId', 'name');
   }
 }

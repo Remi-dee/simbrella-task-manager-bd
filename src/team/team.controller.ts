@@ -127,4 +127,18 @@ export class TeamController {
   ) {
     return this.teamService.removeUserFromTeam(teamId, userId);
   }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all teams' })
+  @ApiResponse({
+    status: 200,
+    description: 'List of all teams fetched successfully.',
+  })
+  @ApiResponse({
+    status: 401,
+    description: 'Unauthorized, user not logged in.',
+  })
+  getAllTeams() {
+    return this.teamService.getAllTeams();
+  }
 }

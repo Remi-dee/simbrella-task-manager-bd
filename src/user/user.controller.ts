@@ -9,12 +9,12 @@ import { EnableNotification } from './user.dto';
 
 @ApiTags('users')
 @ApiBearerAuth('Authorization')
+@UseGuards(JwtAuthGuard)
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @ApiOperation({ summary: 'Get current user profile' })
-  @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Req() req: any) {
     return this.userService.findById(req.user._id);
@@ -22,17 +22,16 @@ export class UserController {
 
   @Get()
   @ApiOperation({ summary: 'Get all users' })
-  @UseGuards(JwtAuthGuard)
   getAllUsers() {
     return this.userService.findAll(); // Ensure you implement findAll in UserService
   }
 
-  @UseGuards(JwtAuthGuard)
   @Patch('preferences')
   updateNotificationPreferences(
     @Body() preferences: EnableNotification,
     @GetUser() user: User,
   ) {
+    console.log('this is user', user);
     return this.userService.updatePreferences(
       user._id,
       preferences.notificationsEnabled,
@@ -41,6 +40,7 @@ export class UserController {
 
   @Get('preferences')
   getUserPreferences(@GetUser() user: User) {
+    console.log('this is user', user);
     return this.userService.getUserPreferences(user._id);
   }
 }

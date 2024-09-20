@@ -19,6 +19,7 @@ export class ProjectService {
     return this.projectModel.find().exec();
   }
 
+
   async getProjectById(id: string): Promise<Project> {
     const project = await this.projectModel.findById(id).exec();
     if (!project) {
