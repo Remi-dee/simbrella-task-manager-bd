@@ -24,9 +24,8 @@ export class TaskService {
         task.title,
         'created',
       );
-
-      return task;
     }
+    return task;
   }
 
   async getTasks(): Promise<Task[]> {
