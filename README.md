@@ -15,7 +15,7 @@ This is the **backend** for the Task Management Application. It manages user aut
 
 Before setting up, make sure you have the following installed:
 
-- [Node.js](https://nodejs.org/en/download/) (v14+)
+- [Node.js](https://nodejs.org/en/download/) 
 - [MongoDB](https://www.mongodb.com/try/download/community) (Running locally or using MongoDB Atlas)
 - [npm](https://www.npmjs.com/get-npm) (or yarn)
 
@@ -26,7 +26,7 @@ Before setting up, make sure you have the following installed:
 To begin, clone the repository from GitHub:
 
 ```bash
-git clone https://github.com/simbrella-task-manager-bd/backend.git
+git clone https://github.com/Remi-dee/simbrella-task-manager-bd.git
 ```
 
 ### 2. Navigate to the Backend Directory
