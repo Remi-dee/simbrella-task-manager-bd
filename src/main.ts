@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Task Management API')
+    .setTitle('Simbrella Task Management API')
     .setDescription('API for task management system')
     .setVersion('1.0')
     .addTag('auth')
