@@ -2,6 +2,9 @@
 
 This is the **backend** for the Task Management Application. It manages user authentication, project and task management, team collaboration, and email notifications. The backend is built using **NestJS**, with **MongoDB** for the database and **Swagger** for API documentation.
 
+API Short Demo
+![simbrella team api](https://github.com/user-attachments/assets/619a0e28-83b0-47be-9f0a-62af4c58a6d0)
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
