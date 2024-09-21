@@ -1,73 +1,111 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Backend - Task Management Application
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is the **backend** for the Task Management Application. It manages user authentication, project and task management, team collaboration, and email notifications. The backend is built using **NestJS**, with **MongoDB** for the database and **Swagger** for API documentation.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
 
-## Description
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [API Documentation](#api-documentation)
+- [Project Structure](#project-structure)
+- [Testing](#testing)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Prerequisites
+
+Before setting up, make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/en/download/) (v14+)
+- [MongoDB](https://www.mongodb.com/try/download/community) (Running locally or using MongoDB Atlas)
+- [npm](https://www.npmjs.com/get-npm) (or yarn)
 
 ## Installation
 
-```bash
-$ npm install
-```
+### 1. Clone the Repository
 
-## Running the app
+To begin, clone the repository from GitHub:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/simbrella-task-manager-bd/backend.git
 ```
 
-## Test
+### 2. Navigate to the Backend Directory
+Move into the backend directory:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cd simbrella-task-manager-bd
 ```
 
-## Support
+### 3. Install Dependencies
+Install all necessary packages by running:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+If you are using npm:
 
-## Stay in touch
+```bash
+Copy code
+npm install
+```
+If you prefer Yarn:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+Copy code
+yarn install
+```
 
-## License
+### 4. Set Up Environment Variables
+Locate the .envExample file in the project root directory and rename it with ".env" 
 
-Nest is [MIT licensed](LICENSE).
+### Running the Application
+
+Run the Backend Server
+Start the server in development mode:
+
+```bash
+Copy code
+npm run start:dev
+```
+If using Yarn:
+
+```bash
+Copy code
+yarn start:dev
+```
+By default, the application will run on http://localhost:4000.
+
+### API Documentation
+The API is documented using Swagger. To view the API documentation, visit:
+
+```bash
+Copy code
+http://localhost:4000/api/docs
+You can explore and interact with the available endpoints directly from the Swagger UI.
+```
+
+### Project Structure
+
+```bash
+backend/
+│
+├── src/
+│   ├── auth/              # Handles user authentication (register, login)
+│   ├── project/           # Handles project-related logic
+│   ├── task/              # Handles task-related logic
+│   ├── team/              # Manages teams and team assignments
+│   ├── common/            # Shared utilities, guards, etc.
+│   ├── app.module.ts      # Root module
+│   └── main.ts            # Application entry point
+├── test/                  # Test files
+├── .env                   # Environment variables
+├── nest-cli.json          # NestJS CLI configuration
+├── package.json           # Project dependencies and scripts
+└── README.md              # Project documentation
+```
+### Testing
+To ensure everything is working as expected, you can run the tests:
+
+Unit tests:
+
+```bash
+Copy code
+npm run test
+```
