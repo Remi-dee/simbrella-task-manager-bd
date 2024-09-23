@@ -1,7 +1,0 @@
-MONGODB_URI = "mongodb+srv://Simbrella:Simbrella247.@remicluster.kyndevf.mongodb.net/"
-
-JWT_SECRET= "7Xb!6fA#2rT@oGz5&dQw7U*1H9cLp"
-
-EMAIL_USER = testportfolio247@gmail.com
-
-EMAIL_PASS = exjz vssn ttyy frec
