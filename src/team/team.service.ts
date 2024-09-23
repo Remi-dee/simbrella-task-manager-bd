@@ -64,13 +64,17 @@ export class TeamService {
     return this.teamModel
       .find({ projectId })
       .populate('members', 'username')
-      .populate('projectId', 'name');
+      .populate('project', 'name')
+      .sort({ createdAt: -1 })
+      .exec();
   }
 
   async getAllTeams() {
     return this.teamModel
       .find()
       .populate('members', 'username')
-      .populate('projectId', 'name');
+      .populate('project', 'name')
+      .sort({ createdAt: -1 })
+      .exec();
   }
 }

@@ -16,12 +16,14 @@ export class ProjectService {
   }
 
   async getProjects(): Promise<Project[]> {
-    return this.projectModel.find().exec();
+    return this.projectModel.find().sort({ createdAt: -1 }).exec();
   }
 
-
   async getProjectById(id: string): Promise<Project> {
-    const project = await this.projectModel.findById(id).exec();
+    const project = await this.projectModel
+      .findById(id)
+      .sort({ createdAt: -1 })
+      .exec();
     if (!project) {
       throw new NotFoundException('Project not found');
     }

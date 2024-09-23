@@ -29,13 +29,18 @@ export class TaskService {
   }
 
   async getTasks(): Promise<Task[]> {
-    return this.taskModel.find().populate('createdBy assignedTo').exec();
+    return this.taskModel
+      .find()
+      .populate('createdBy assignedTo')
+      .sort({ createdAt: -1 })
+      .exec();
   }
 
   async getTaskById(id: string): Promise<Task> {
     const task = await this.taskModel
       .findById(id)
       .populate('createdBy assignedTo')
+      .sort({ createdAt: -1 })
       .exec();
     if (!task) {
       throw new NotFoundException('Task not found');
