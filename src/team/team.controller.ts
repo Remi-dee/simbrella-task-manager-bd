@@ -141,4 +141,20 @@ export class TeamController {
   getAllTeams() {
     return this.teamService.getAllTeams();
   }
+
+  @Delete('all')
+  @ApiOperation({ summary: 'Delete all teams' })
+  @ApiResponse({
+    status: 200,
+    description: 'All teams have been successfully deleted.',
+  })
+  deleteAllTeams() {
+    return this.teamService.deleteAllTeams();
+  }
+
+  @Get()
+  async dropIndex(): Promise<string> {
+    await this.teamService.dropTeamIdIndex();
+    return 'Index dropped successfully';
+  }
 }

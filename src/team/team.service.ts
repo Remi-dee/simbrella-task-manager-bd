@@ -77,4 +77,18 @@ export class TeamService {
       .sort({ createdAt: -1 })
       .exec();
   }
+
+  async deleteAllTeams() {
+    const result = await this.teamModel.deleteMany({}); // Deletes all teams
+    return {
+      message: 'All teams deleted successfully',
+      deletedCount: result.deletedCount,
+    };
+  }
+
+  async dropTeamIdIndex(): Promise<void> {
+    try {
+      await this.teamModel.collection.dropIndex('_id');
+    } catch (error) {}
+  }
 }

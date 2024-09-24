@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Req, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
@@ -42,5 +42,11 @@ export class UserController {
   getUserPreferences(@GetUser() user: User) {
     console.log('this is user', user);
     return this.userService.getUserPreferences(user._id);
+  }
+
+  @Delete('all')
+  @ApiOperation({ summary: 'Delete all users' })
+  deleteAllUsers() {
+    return this.userService.deleteAllUsers(); // Call service to delete all users
   }
 }

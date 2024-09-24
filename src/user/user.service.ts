@@ -45,4 +45,9 @@ export class UserService {
       { new: true },
     );
   }
+
+  async deleteAllUsers(): Promise<{ message: string }> {
+    await this.userModel.deleteMany(); // Deletes all users
+    return { message: 'All users have been deleted' };
+  }
 }
