@@ -40,7 +40,7 @@ export class EmailService {
             </p>
             <p style="font-size: 16px; color: #555555;">Best Regards,<br>Your Team</p>
             <div style="text-align: center; margin-top: 30px;">
-              <a href="http://localhost:3000/dashboard" style="background-color: #007bff; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Go to Dashboard</a>
+              <a href="http://localhost:3000/task" style="background-color: #007bff; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Go to Dashboard to see your tasks</a>
             </div>
           </div>
         </div>
